@@ -10,4 +10,4 @@ RUN ./gradlew clean assemble
 
 EXPOSE 8080
 
-CMD ["java", "-Dserver.port=${PORT}", "-jar", "build/libs/TUWAR.war"]
+CMD ["java", "-Dserver.port=${PORT}", "-jar", "build/libs/b-cocina.war"]
