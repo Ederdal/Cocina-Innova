@@ -1,0 +1,125 @@
+---
+grails:
+  profile: rest-api
+  codegen:
+    defaultPackage: restaurante_carlos
+  reload:
+    enabled: true
+  gorm:
+    reactor:
+      events: false
+
+info:
+  app:
+    name: "@info.app.name@"
+    version: "@info.app.version@"
+    grailsVersion: "@info.app.grailsVersion@"
+
+spring:
+  groovy:
+    template:
+      check-template-location: false
+
+# customize Spring Boot Actuator end-points
+management:
+  context-path: /api/management
+
+
+restaurant:
+  images:
+  
+    
+    base-url: http://localhost:8080/api/images
+  dish:
+  
+    maxAvailableDishes: 50
+    minQuantity: 1
+    maxNameLength: 80
+    maxDescriptionLength: 100
+    maxImageUrlSize: 500
+    maxCost: 500
+    topDishesChartDays: 7
+    topDishesChartLimit: 10
+
+---
+grails:
+  mime:
+    disable:
+      accept:
+        header:
+          userAgents:
+            - Gecko
+            - WebKit
+            - Presto
+            - Trident
+    types:
+      json:
+        - application/json
+        - text/json
+      hal:
+        - application/hal+json
+        - application/hal+xml
+      xml:
+        - text/xml
+        - application/xml
+      atom: application/atom+xml
+      css: text/css
+      csv: text/csv
+      js: text/javascript
+      rss: application/rss+xml
+      text: text/plain
+      all: "*/*"
+  urlmapping:
+    cache:
+      maxsize: 1000
+  controllers:
+    defaultScope: singleton
+  converters:
+    encoding: UTF-8
+---
+hibernate:
+  cache:
+    queries: false
+    use_second_level_cache: false
+    use_query_cache: false
+---
+grails:
+  cors:
+    enabled: true
+    allow:
+      origins:
+        - "*"
+      methods:
+        - "GET"
+        - "POST"
+        - "PUT"
+        - "DELETE"
+        - "OPTIONS"
+      headers:
+        - "Origin"
+        - "Access-Control-Request-Method"
+        - "Access-Control-Request-Headers"
+        - "Content-Type"
+        - "Authorization" 
+      credentials: true
+---
+grails:
+  controllers:
+    upload:
+      maxFileSize: 10485760
+      maxRequestSize: 10485760
+---
+server:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  tomcat:
+    max-swallow-size: 10485760
+    max-http-post-size: 10485760
+---
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB 
